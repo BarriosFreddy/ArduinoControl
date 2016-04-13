@@ -5,17 +5,24 @@
  */
 package com.freddybarrios;
 
+import com.freddybarrios.conexion.Conexion;
+import com.freddybarrios.constant.Directions;
+
 /**
  *
  * @author Freddy Barrios
  */
 public class Main extends javax.swing.JFrame {
 
+    Conexion conexion = new Conexion();
+
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        conexion.arduinoConnection();
+
     }
 
     /**
@@ -43,10 +50,10 @@ public class Main extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/arrow-up.png"))); // NOI18N
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                pressedUpButton(evt);
+                pressedForwardButton(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                releasedUpButton(evt);
+                releasedForwardButton(evt);
             }
         });
 
@@ -63,10 +70,10 @@ public class Main extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/arrow-down.png"))); // NOI18N
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                pressedDownButton(evt);
+                pressedBackButton(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                releasedDownButton(evt);
+                releasedBackButton(evt);
             }
         });
 
@@ -137,29 +144,37 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pressedUpButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedUpButton
-    }//GEN-LAST:event_pressedUpButton
+    private void pressedForwardButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedForwardButton
+        conexion.sendData(Directions.FORWARD);
+    }//GEN-LAST:event_pressedForwardButton
 
-    private void releasedUpButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedUpButton
-    }//GEN-LAST:event_releasedUpButton
+    private void releasedForwardButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedForwardButton
+        conexion.sendData(Directions.STOP);
+    }//GEN-LAST:event_releasedForwardButton
 
     private void pressedRightButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedRightButton
+        conexion.sendData(Directions.RIGHT);
     }//GEN-LAST:event_pressedRightButton
 
     private void releasedRightButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedRightButton
+        conexion.sendData(Directions.STOP);
     }//GEN-LAST:event_releasedRightButton
 
     private void pressedLeftButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedLeftButton
+        conexion.sendData(Directions.LEFT);
     }//GEN-LAST:event_pressedLeftButton
 
     private void releasedLeftButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedLeftButton
+        conexion.sendData(Directions.STOP);
     }//GEN-LAST:event_releasedLeftButton
 
-    private void pressedDownButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedDownButton
-    }//GEN-LAST:event_pressedDownButton
+    private void pressedBackButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedBackButton
+        conexion.sendData(Directions.BACK);
+    }//GEN-LAST:event_pressedBackButton
 
-    private void releasedDownButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedDownButton
-    }//GEN-LAST:event_releasedDownButton
+    private void releasedBackButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedBackButton
+        conexion.sendData(Directions.STOP);
+    }//GEN-LAST:event_releasedBackButton
 
     /**
      * @param args the command line arguments
