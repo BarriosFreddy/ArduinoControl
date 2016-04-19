@@ -40,6 +40,7 @@ public class Main extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control ");
@@ -48,42 +49,37 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setText("ARDUINO CONTROL");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/arrow-up.png"))); // NOI18N
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pressedForwardButton(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                releasedForwardButton(evt);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionBtnForward(evt);
             }
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/arrow-left.png"))); // NOI18N
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pressedLeftButton(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                releasedLeftButton(evt);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionBtnLeft(evt);
             }
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/arrow-down.png"))); // NOI18N
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pressedBackButton(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                releasedBackButton(evt);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionBtnBack(evt);
             }
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/arrow-right.png"))); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pressedRightButton(evt);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionBtnRight(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                releasedRightButton(evt);
+        });
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/freddybarrios/resources/icons/pare.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionBtnStop(evt);
             }
         });
 
@@ -94,16 +90,17 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,16 +109,22 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 19, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 19, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(113, 113, 113))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,37 +147,25 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pressedForwardButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedForwardButton
+    private void actionBtnStop(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionBtnStop
+        conexion.sendData(Directions.STOP);
+    }//GEN-LAST:event_actionBtnStop
+
+    private void actionBtnForward(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionBtnForward
         conexion.sendData(Directions.FORWARD);
-    }//GEN-LAST:event_pressedForwardButton
+    }//GEN-LAST:event_actionBtnForward
 
-    private void releasedForwardButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedForwardButton
-        conexion.sendData(Directions.STOP);
-    }//GEN-LAST:event_releasedForwardButton
-
-    private void pressedRightButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedRightButton
-        conexion.sendData(Directions.RIGHT);
-    }//GEN-LAST:event_pressedRightButton
-
-    private void releasedRightButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedRightButton
-        conexion.sendData(Directions.STOP);
-    }//GEN-LAST:event_releasedRightButton
-
-    private void pressedLeftButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedLeftButton
-        conexion.sendData(Directions.LEFT);
-    }//GEN-LAST:event_pressedLeftButton
-
-    private void releasedLeftButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedLeftButton
-        conexion.sendData(Directions.STOP);
-    }//GEN-LAST:event_releasedLeftButton
-
-    private void pressedBackButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pressedBackButton
+    private void actionBtnBack(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionBtnBack
         conexion.sendData(Directions.BACK);
-    }//GEN-LAST:event_pressedBackButton
+    }//GEN-LAST:event_actionBtnBack
 
-    private void releasedBackButton(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_releasedBackButton
-        conexion.sendData(Directions.STOP);
-    }//GEN-LAST:event_releasedBackButton
+    private void actionBtnRight(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionBtnRight
+        conexion.sendData(Directions.RIGHT);
+    }//GEN-LAST:event_actionBtnRight
+
+    private void actionBtnLeft(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionBtnLeft
+        conexion.sendData(Directions.LEFT);
+    }//GEN-LAST:event_actionBtnLeft
 
     /**
      * @param args the command line arguments
@@ -214,6 +205,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

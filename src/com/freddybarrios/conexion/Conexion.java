@@ -16,7 +16,7 @@ public class Conexion {
 
     private OutputStream Output = null;
     SerialPort serialPort;
-    private final String PORT_NAME = "COM6";
+    private final String PORT_NAME = "COM3";
     private final int ERROR = 0;
     private static final int TIME_OUT = 2000;
     private static final int DATA_RATE = 9600;
@@ -28,7 +28,7 @@ public class Conexion {
 
         while (portEnum.hasMoreElements()) {
             CommPortIdentifier currPortId = (CommPortIdentifier) portEnum.nextElement();
-            
+
             System.out.println("Nombre: " + currPortId.getName());
             if (PORT_NAME.equals(currPortId.getName())) {
                 portId = currPortId;
@@ -54,11 +54,12 @@ public class Conexion {
     }
 
     public void sendData(String data) {
-//        try {
-        System.out.println(data);
-//            Output.write(data.getBytes());
-//        } catch (IOException e) {
-//            System.exit(ERROR);
-//        }
+        try {
+            System.out.println("Data to send --> "+data);
+            Output.write(data.getBytes());
+            System.out.println("Sended data");
+        } catch (IOException e) {
+            System.exit(ERROR);
+        }
     }
 }

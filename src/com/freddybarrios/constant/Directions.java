@@ -10,9 +10,9 @@ package com.freddybarrios.constant;
  * @author freddy
  */
 public interface Directions {
-    public static final String RIGHT = "R";
-    public static final String LEFT = "L";
-    public static final String FORWARD = "F";
-    public static final String BACK = "B";
-    public static final String STOP = "S";
+    public static final String RIGHT = "2";
+    public static final String LEFT = "4";
+    public static final String FORWARD = "1";
+    public static final String BACK = "3";
+    public static final String STOP = "0";
 }
